@@ -165,8 +165,8 @@ let g:ale_fix_on_save = 1
 let g:ale_fixers = {
     \ '*': ['remove_trailing_lines', 'trim_whitespace'],
     \ }
-nmap <silent> <C-p> <Plug>(ale_previous_wrap)
-nmap <silent> <C-n> <Plug>(ale_next_wrap)
+nmap <silent><C-p> <Plug>(ale_previous_wrap)
+nmap <silent><C-n> <Plug>(ale_next_wrap)
 " }}}
 
 " Colors (onehalf-dark) {{{
@@ -219,7 +219,9 @@ command! -bang -nargs=* FzfRg call RipgrepFzf(<q-args>, <bang>0)
 " }}}
 
 " Autocompletion (coc.nvim) {{{
-
+let g:coc_global_extension = ['coc-json', 'coc-python']
+inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <silent><expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 " }}}
 
 " Polyglot {{{
