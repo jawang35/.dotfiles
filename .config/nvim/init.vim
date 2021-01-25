@@ -88,6 +88,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'justinmk/vim-dirvish'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'Raimondi/delimitMate'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
@@ -99,9 +100,6 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 
 " Neovim plugins
-Plug 'deoplete-plugins/deoplete-jedi', PlugCond(has('nvim'))
-Plug 'Shougo/deoplete.nvim', PlugCond(has('nvim'))
-Plug 'Shougo/echodoc', PlugCond(has('nvim'))
 Plug 'simnalamburt/vim-mundo', PlugCond(has('nvim'))
 Plug 'w0rp/ale', PlugCond(has('nvim'))
 
@@ -220,19 +218,8 @@ endfunction
 command! -bang -nargs=* FzfRg call RipgrepFzf(<q-args>, <bang>0)
 " }}}
 
-" Autocompletion (deoplete/echodoc) {{{
-" Silence problematic messages
-set shortmess+=c
-set omnifunc=syntaxcomplete#Complete
-let g:deoplete#enable_at_startup = 1
+" Autocompletion (coc.nvim) {{{
 
-" Use echodoc to move autocompletion preview window to command line
-set completeopt=menu,noselect
-let g:echodoc_enable_at_startup = 1
-
-" Tab through pop-up menus
-inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 " }}}
 
 " Polyglot {{{
