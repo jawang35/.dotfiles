@@ -23,7 +23,6 @@ set nrformats=hex
 set sessionoptions-=options
 set smarttab
 set tabpagemax=50
-set tags=./tags;,tags
 set ttyfast
 set viminfo+=!
 set wildmenu
@@ -87,7 +86,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'justinmk/vim-dirvish'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'Raimondi/delimitMate'
 Plug 'ryanoasis/vim-devicons'
@@ -199,7 +197,6 @@ let g:fzf_command_prefix = 'Fzf'
 nnoremap <silent><leader>b :FzfBuffers<CR>
 nnoremap <silent><leader>f :FzfRg<CR>
 nnoremap <silent><leader>p :FzfFiles<CR>
-nnoremap <silent><leader>t :FzfTags<CR>
 
 " Previews
 command! -bang -nargs=? -complete=dir FzfFiles call fzf#vim#files(
@@ -240,18 +237,6 @@ let g:closetag_regions = {
     \ 'typescript': 'jsxRegion,tsxRegion',
     \ 'javascript': 'jsxRegion',
     \ }
-" }}}
-
-" Tags {{{
-let g:gutentags_file_list_command = 'fd --exclude .git --type f'
-let g:gutentags_exclude_filetypes = ['gitcommit']
-let g:gutentags_project_root = ['environment.yml', 'Makefile', 'package.json', 'requirements.txt']
-let g:gutentags_add_default_project_roots = 0
-augroup GutentagsLightlineRefresher
-    autocmd!
-    autocmd User GutentagsUpdating call lightline#update()
-    autocmd User GutentagsUpdated call lightline#update()
-augroup END
 " }}}
 
 " Status and tab bars (lightline) {{{
@@ -314,7 +299,7 @@ let g:lightline = {
     \ 'colorscheme': 'onehalfdark',
     \ 'tabline': {
     \   'left': [ [ 'cwd' ] ],
-    \   'right': [ [ 'readonly', 'modified', 'ctags' ] ] },
+    \   'right': [ [ 'readonly', 'modified' ] ] },
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'filepath' ],
@@ -328,8 +313,7 @@ let g:lightline = {
     \              [ 'percent' ] ] },
     \ 'component_expand': { 'cwd': 'LightlineCWD' },
     \ 'component_type': { 'cwd': 'tabsel' },
-    \ 'component_function': { 'ctags': 'gutentags#statusline',
-    \                         'filepath': 'LightlineFilePath',
+    \ 'component_function': { 'filepath': 'LightlineFilePath',
     \                         'fileinfo': 'LightlineFileInfo',
     \                         'gitbranch': 'LightlineGitBranch' } }
 " }}}
