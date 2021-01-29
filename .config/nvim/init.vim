@@ -113,7 +113,8 @@ call plug#end()
 set undofile
 
 " Centralized swap, backup, undo files
-set backupdir=~/.local/share/vim/backup//
+set nobackup
+set nowritebackup
 set directory=~/.local/share/vim/swap//
 set undodir=~/.local/share/vim/undo//
 
@@ -216,9 +217,14 @@ command! -bang -nargs=* FzfRg call RipgrepFzf(<q-args>, <bang>0)
 " }}}
 
 " Autocompletion (coc.nvim) {{{
+set shortmess+=c
 let g:coc_global_extension = ['coc-css', 'coc-go', 'coc-html', 'coc-jedi', 'coc-json', 'coc-sh', 'coc-tsserver']
 inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <silent><expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 " }}}
 
 " Polyglot {{{
