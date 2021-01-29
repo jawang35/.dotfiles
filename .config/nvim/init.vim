@@ -86,7 +86,6 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'justinmk/vim-dirvish'
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'Raimondi/delimitMate'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
@@ -98,6 +97,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 
 " Neovim plugins
+Plug 'neoclide/coc.nvim', PlugCond(has('nvim'), { 'branch': 'release' })
 Plug 'simnalamburt/vim-mundo', PlugCond(has('nvim'))
 Plug 'w0rp/ale', PlugCond(has('nvim'))
 
@@ -216,9 +216,9 @@ command! -bang -nargs=* FzfRg call RipgrepFzf(<q-args>, <bang>0)
 " }}}
 
 " Autocompletion (coc.nvim) {{{
-let g:coc_global_extension = ['coc-json', 'coc-python']
-inoremap <silent><expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <silent><expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+let g:coc_global_extension = ['coc-css', 'coc-go', 'coc-html', 'coc-jedi', 'coc-json', 'coc-sh', 'coc-tsserver']
+inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <silent><expr><S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " }}}
 
 " Polyglot {{{
